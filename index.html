@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            cursor: inherit;
+        }
+
+
+        header{
+            background-color: #FFCC03;
+            gap: 30px;
+            height: 100vh;
+            display: flex;
+            flex-direction:row ;
+            transition: height 0.3s ease-in-out;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 350;
+            position: fixed;
+            top: 0;
+            z-index: 90;
+        }
+
+        .Logo img{
+            height: 53px;
+            width: auto;
+        }
+
+        .hamburgesa img {
+            height: 20px;
+            width: auto;
+        }
+        
+        main{
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .conjunto_izq{
+            margin-left: 55px;
+            flex-direction: row;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .conjunto_dr{
+            position: absolute;
+            right: 55px;
+            flex-direction: row;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .principales{
+            display: grid;
+            grid-template-areas: "a b";
+            flex-direction: row;
+            gap: 25px;
+            margin-top: 110px;
+            margin-bottom: 25px;
+        }
+
+        .principal_iz img, .principal_dr img {
+            max-width: 45vw;
+        }
+
+        .principal_iz{
+            grid-area: a;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .principal_dr p, .principal_iz p{
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 70px 30px;
+            z-index: 2;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: bold;
+            font-size: 30px;
+            opacity: 0;
+            transition: opacity .5s linear;
+            -webkit-transition: opacity .5s ease-out;  
+            -moz-transition: opacity .5s ease-in-out;   
+        }
+
+        .principal_iz:hover p, .principal_dr:hover p{
+            opacity: 1; 
+            
+        }
+
+
+        .principal_dr{
+            grid-area: b;
+            position: relative;
+           
+        }
+
+        .secundario1 p, .secundario2 p, .secundario3 p, .secundario4 p{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            width: 232px;
+            height: 154px;
+            align-items: center;
+            text-align: center;
+            z-index: 2;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: bold;
+            font-size: 26px;
+            opacity: 0;
+            transition: opacity .5s linear;
+            -webkit-transition: opacity .5s ease-out;  
+            -moz-transition: opacity .5s ease-in-out;   
+        }
+
+        .secundario1:hover p, .secundario2:hover p, .secundario3:hover p, .secundario4:hover p{
+            opacity: 1;
+        }
+
+        .secundarios{
+            display: grid;
+            grid-template-areas: "a b c d";
+            flex-direction: row;
+            gap: 25px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .secundario1{
+            grid-area: a;
+            position: relative;
+        }
+        .secundario2{
+            grid-area: b;
+            position: relative;
+        }
+        .secundario3{
+            grid-area: c;
+            position: relative;
+        }
+        .secundario4{
+            grid-area: d;
+            position: relative;
+        }
+
+        .secundario1 img, .secundario2 img, .secundario3 img, .secundario4 img {
+            max-width: 21.5vw;
+        }
+
+        .carrito img {
+            height: 16px;
+            width: 16px;
+        }
+        .carrito {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .cuenta {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+   <header>
+        <div class="conjunto_izq">
+            <div class="hamburgesa">
+                <img src="https://cdn.icon-icons.com/icons2/1524/PNG/512/threebars_106419.png" alt="Tres Puntos">
+            </div>
+            <div  class="Logo">
+                <a href="index.html" id="link">
+                    <img src="https://www.ogsbrand.com/images/logo-black.png" alt="Logo">
+                </a>
+            </div>
+        </div>
+        <div class="conjunto_dr">
+            <div class="cuenta">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.696.074a3.841 3.841 0 1 1 1.498 7.534A3.841 3.841 0 0 1 7.696.074ZM9 1.049a2.85 2.85 0 1 0-1.112 5.59 2.85 2.85 0 0 0 1.112-5.59Z"></path> <path d="M3.887 10.813A6.444 6.444 0 0 1 14.89 15.37a.494.494 0 1 1-.988 0v-.003a5.457 5.457 0 0 0-10.913 0v.003a.494.494 0 1 1-.988 0c0-1.71.679-3.348 1.887-4.557Z"></path></svg>
+                <p>Cuenta</p>
+            </div>
+            <div class="carrito">
+                <img src="https://cdn-icons-png.flaticon.com/512/6652/6652151.png" alt="">
+                <p>Carrito</p>
+            </div> 
+        </div>
+   </header> 
+
+   <!-- PÁGINA PRINCIPAL -->
+
+   <main>
+        <div class="principales">
+            <div class="principal_iz">
+                <a id="link" href="TRUE FELINO.html">
+                <p>TRUE FELINO</p>
+                    <img src="https://ogsbrand.storage.googleapis.com/media/images/OGS_W24_Legends_Banner_Low.2e16d0ba.fill-700x930-c100.png" alt="foto izquierda">
+                </a>
+            </div>
+            <div class="principal_dr">
+                <p>OGS RECORDS</p>
+                <img src="https://ogsbrand.storage.googleapis.com/media/images/OGS_W24_OGS_Records_Banner_Lo.2e16d0ba.fill-700x930-c100.png" alt="foto dr">
+            </div>
+        </div>
+        <div class="secundarios">
+            <div class="secundario1">
+                <img src="https://ogsbrand.storage.googleapis.com/media/images/OGS_W24_Running_Club_Banner_l.2e16d0ba.fill-700x930-c100.png" alt="foto izquierda">
+                <p class="subtitle">RUNNING CLUB</p>
+            </div>
+            <div class="secundario2">
+                <img src="https://ogsbrand.storage.googleapis.com/media/images/OGS_W24_Meme_Addict_Banner_Lo.2e16d0ba.fill-700x930-c100.png" alt="foto izquierda">
+                <p class="subtitle">SEND MEMES</p>
+            </div>
+            <div class="secundario3">
+                <img src="https://ogsbrand.storage.googleapis.com/media/images/OGS_OCTUBRE_Clasicazo_Banner_.2e16d0ba.fill-700x930-c100.jpg" alt="foto izquierda">
+                <p class="subtitle">THE BASICS & <br>THE CLASSICS</p>
+            </div>
+            <div class="secundario4">
+                <img src="https://ogsbrand.storage.googleapis.com/media/images/Copy_of_OGS_MAR24_Banner_EDIT.2e16d0ba.fill-700x930-c100.png" alt="foto izquierda">
+                <p class="subtitle">THE 2.0 EDITION</p>
+            </div>
+        </div>
+   </main>
+
+   <script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('header');
+    
+    // Siempre iniciar a 100vh
+    header.style.height = '100vh';
+    header.style.transition = 'height 0.5s ease';
+
+    // Verificar si es una recarga con estado especial
+    if (sessionStorage.getItem('expandHeader') === 'true') {
+        // Después de un breve tiempo, volver a 85px
+        setTimeout(() => {
+            header.style.height = '85px';
+            sessionStorage.removeItem('expandHeader');
+        }, 250); // Ajusta tiempo según necesites
+    } else {
+        // Si no hay estado especial, esperar 250ms y reducir
+        setTimeout(() => {
+            header.style.height = '85px';
+        }, 250);
+    }
+});
+
+// Función para navegación con expansión
+function toggleHeaderHeight(targetUrl) {
+    // Marcar para expansión en próxima página
+    sessionStorage.setItem('expandHeader', 'true');
+    
+    // Cambiar altura actual
+    const header = document.querySelector('header');
+    header.style.height = '100vh';
+    header.style.transition = 'height 0.5s ease';
+
+    // Navegar después de transición
+    setTimeout(() => {
+        window.location.href = targetUrl;
+    }, 500);
+}
+
+// Aplicar a todos los enlaces
+document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleHeaderHeight(link.href);
+    });
+});
+
+
+  </script>
+
+</body>
+</html>
