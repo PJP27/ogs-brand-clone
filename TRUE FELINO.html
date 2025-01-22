@@ -206,9 +206,6 @@
     header.style.height = '100vh';
     header.style.transition = 'height 0.5s ease';
 
-    // Nuevo detector de altura
-    headerHeightDetector();
-
     // Verificar si es una recarga con estado especial
     if (sessionStorage.getItem('expandHeader') === 'true') {
         // Después de un breve tiempo, volver a 85px
@@ -223,28 +220,6 @@
         }, 250);
     }
 });
-
-// Nueva función de detección de altura
-function headerHeightDetector() {
-    let detectionCount = 0;
-    const header = document.querySelector('header');
-
-    const detector = setInterval(() => {
-        if (header.style.height === '100vh') {
-            detectionCount++;
-            
-            if (detectionCount >= 2) {
-                // Después de dos detecciones, reducir altura
-                header.style.height = '85px';
-                clearInterval(detector);
-                console.log('Header height reduced after two 100vh detections');
-            }
-        } else {
-            // Reiniciar contador si altura no es 100vh
-            detectionCount = 0;
-        }
-    }, 2000); // Cada 2 segundos
-}
 
 // Función para navegación con expansión
 function toggleHeaderHeight(targetUrl) {
@@ -269,6 +244,7 @@ document.querySelectorAll('a').forEach(link => {
         toggleHeaderHeight(link.href);
     });
 });
+
 
   </script>
 </body>
