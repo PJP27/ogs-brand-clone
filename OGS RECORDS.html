@@ -69,7 +69,7 @@
         }
 
         .conjunto_izq{
-            margin-left: 55px;
+            margin-left: 37px;
             flex-direction: row;
             display: flex;
             align-items: center;
@@ -201,52 +201,64 @@
 
    <script>
     document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('header');
+        const header = document.querySelector('header');
+        
+        // Siempre iniciar a 100vh
+        header.style.height = '100vh';
+        header.style.transition = 'height 0.5s ease';
     
-    // Siempre iniciar a 100vh
-    header.style.height = '100vh';
-    header.style.transition = 'height 0.5s ease';
-
-    // Verificar si es una recarga con estado especial
-    if (sessionStorage.getItem('expandHeader') === 'true') {
-        // Después de un breve tiempo, volver a 85px
-        setTimeout(() => {
-            header.style.height = '85px';
-            sessionStorage.removeItem('expandHeader');
-        }, 250); // Ajusta tiempo según necesites
-    } else {
-        // Si no hay estado especial, esperar 250ms y reducir
-        setTimeout(() => {
-            header.style.height = '85px';
-        }, 250);
-    }
-});
-
-// Función para navegación con expansión
-function toggleHeaderHeight(targetUrl) {
-    // Marcar para expansión en próxima página
-    sessionStorage.setItem('expandHeader', 'true');
+        // Verificar si es una recarga con estado especial
+        if (sessionStorage.getItem('expandHeader') === 'true') {
+            // Después de un breve tiempo, volver a 85px
+            setTimeout(() => {
+                header.style.height = '85px';
+                sessionStorage.removeItem('expandHeader');
+            }, 250); // Ajusta tiempo según necesites
+        } else {
+            // Si no hay estado especial, esperar 250ms y reducir
+            setTimeout(() => {
+                header.style.height = '85px';
+            }, 250);
+        }
     
-    // Cambiar altura actual
-    const header = document.querySelector('header');
-    header.style.height = '100vh';
-    header.style.transition = 'height 0.5s ease';
-
-    // Navegar después de transición
-    setTimeout(() => {
-        window.location.href = targetUrl;
-    }, 500);
-}
-
-// Aplicar a todos los enlaces
-document.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        toggleHeaderHeight(link.href);
+        // Manejar botón de retroceso
+        window.addEventListener('popstate', () => {
+            // Forzar recarga de página
+            sessionStorage.setItem('forceReload', 'true');
+            location.reload();
+        });
     });
-});
-
-
-  </script>
+    
+    // Función para navegación con expansión
+    function toggleHeaderHeight(targetUrl) {
+        // Marcar para expansión en próxima página
+        sessionStorage.setItem('expandHeader', 'true');
+        
+        // Cambiar altura actual
+        const header = document.querySelector('header');
+        header.style.height = '100vh';
+        header.style.transition = 'height 0.5s ease';
+    
+        // Navegar después de transición
+        setTimeout(() => {
+            window.location.href = targetUrl;
+        }, 500);
+    }
+    
+    // Aplicar a todos los enlaces
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleHeaderHeight(link.href);
+        });
+    });
+    
+    // Verificar si es una recarga forzada
+    if (sessionStorage.getItem('forceReload') === 'true') {
+        sessionStorage.removeItem('forceReload');
+        sessionStorage.setItem('expandHeader', 'true');
+    }
+    </script>
+    
 </body>
 </html>
