@@ -97,6 +97,10 @@
             gap: 25px;
             margin-top: 3px;
             margin-bottom: 25px;
+
+            @media only screen and (max-width: 1046px) {
+                grid-template-areas: "a" "b";
+            }
         }
 
         .principal_iz img, .principal_dr img {
@@ -110,21 +114,34 @@
             left: 50%;
             transform: translate(-50%, -50%);
             opacity: 0;
+
+            @media only screen and (max-width: 1046px) {
+                position: relative;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                transform: translate(0px, 0px);
+            }
         }
 
         .principal_iz:hover img:nth-of-type(2), .principal_dr:hover img:nth-of-type(2){
-            opacity: 1;
+           
+            @media only screen and (min-width: 1046px) {
+                opacity: 1;
+            }
         } 
 
         .principal_iz:hover img:nth-of-type(1), .principal_dr:hover img:nth-of-type(1){
-            opacity: 0;
+            @media only screen and (min-width: 1046px) {
+                opacity: 0;
+            }
         }
 
         .principal_iz{
             grid-area: a;
             position: relative;
             cursor: pointer;
-        } 
+        }
 
 
         .principal_dr{
@@ -138,11 +155,30 @@
             position: relative;
             width: 80%;
             margin-bottom: 50px;
+
+            @media only screen and (max-width: 1046px) {
+                display: none;
+            }
         }
 
-        .precios_principal_dr{
+        .precio2{
             position: absolute;
-            right: 0;
+            right: 10px;
+        }
+
+        .precios_principal_iz{
+            display: none;
+
+            @media only screen and (max-width: 1046px) {
+                display: block;
+            }
+        } 
+
+        .precios_principal_dr{
+            display: none;
+            @media only screen and (max-width: 1046px) {
+                display: block;
+            }
         }
     </style>
 </head>
@@ -150,7 +186,7 @@
     <header>
         <div class="conjunto_izq">
             <div class="hamburgesa">
-                <img src="https://cdn.icon-icons.com/icons2/1524/PNG/512/threebars_106419.png" alt="Tres Puntos">
+                <img src="https://cdn-icons-png.flaticon.com/512/59/59660.png" alt="Tres Puntos">
             </div>
             <div  class="Logo">
                 <a href="./index.html">
@@ -180,18 +216,26 @@
         <div class="principal_iz">
                 <img src="https://ogsbrand.storage.googleapis.com/media/images/LEGENDS_OGS_Black_Shirt_Front.2e16d0ba.fill-800x933-c100.png" alt="foto izquierda">
                 <img src="https://ogsbrand.storage.googleapis.com/media/images/LEGENDS_OGS_Black_Shirt_Back.2e16d0ba.fill-800x933-c100.png" alt="foto izquierda" class="camisetadetras">  
+                <div class="precios_principal_iz">
+                    <h2>TRUE FELINO - Relaxed fit T-shirt</h2>
+                    <p>34.99 €</p>
+                </div>
         </div>
         <div class="principal_dr">
             <img src="https://ogsbrand.storage.googleapis.com/media/images/LEGENDS_OGS_Black_Hoodie_Fron.2e16d0ba.fill-800x933-c100.png" alt="foto izquierda">
             <img src="https://ogsbrand.storage.googleapis.com/media/images/LEGENDS_OGS_Black_Hoodie_Back.2e16d0ba.fill-800x933-c100.png" alt="foto izquierda" class="camisetadetras">
+            <div class="precios_principal_dr">
+                <h2>TRUE FELINO - Oversized Hoodie</h2>
+                <p>59.99 €</p>
+            </div>
         </div>
     </div>
     <div class="precios">
-        <div class="precios_principal_iz">
+        <div>
             <h2>TRUE FELINO - Relaxed fit T-shirt</h2>
             <p>34.99 €</p>
         </div>
-        <div class="precios_principal_dr">
+        <div class="precio2">
             <h2>TRUE FELINO - Oversized Hoodie</h2>
             <p>59.99 €</p>
         </div>
