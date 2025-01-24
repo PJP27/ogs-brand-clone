@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>OG's RECORDS</title>
     <style>
         *{
             margin: 0;
@@ -38,11 +38,23 @@
         .Logo img{
             height: 53px;
             width: auto;
+            cursor: pointer;
         }
 
         .hamburgesa img {
-            height: 20px;
+            height: 30px;
             width: auto;
+            
+        }
+
+        .hamburgesa{
+            @media only screen and (max-width: 674px) {
+                position: absolute;
+                right: 55px;
+                flex-direction: row;
+                display: flex;
+                align-items: center;
+            }
         }
         
         main{
@@ -83,6 +95,10 @@
             display: flex;
             align-items: center;
             gap: 40px;
+
+            @media only screen and (max-width: 674px) {
+                display: none;
+            }
         }
 
         h1{
