@@ -378,51 +378,57 @@
    </main>
 
    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const header = document.querySelector('header');
-        
-        // Siempre iniciar a 100vh
+    document.addEventListener('DOMContentLoaded', setupHeaderAnimation);
+window.addEventListener('pageshow', setupHeaderAnimation);
+
+function setupHeaderAnimation() {
+    const header = document.querySelector('header');
+
+    // Siempre iniciar a 100vh
+    header.style.height = '100vh';
+    header.style.transition = 'height 0.5s ease';
+
+    // Detectar si el dispositivo es táctil
+    function isTouchDevice() {
+        return "ontouchstart" in window || (window.DocumentTouch && document instanceof DocumentTouch);
+    }
+
+    if (isTouchDevice() || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        document.body.classList.add('touch-device');
+    }
+
+    // Verificar si es una recarga con estado especial
+    if (sessionStorage.getItem('expandHeader') === 'true') {
+        setTimeout(() => {
+            header.style.height = '85px';
+            sessionStorage.removeItem('expandHeader');
+        }, 250);
+    } else {
+        setTimeout(() => {
+            header.style.height = '85px';
+        }, 250);
+    }
+
+    // Manejar botón de retroceso
+    window.addEventListener('popstate', () => {
+        // Forzar la animación desde 100vh
         header.style.height = '100vh';
-        header.style.transition = 'height 0.5s ease';
-    
-        // Verificar si es una recarga con estado especial
-        if (sessionStorage.getItem('expandHeader') === 'true') {
-            // Después de un breve tiempo, volver a 85px
-            setTimeout(() => {
-                header.style.height = '85px';
-                sessionStorage.removeItem('expandHeader');
-            }, 250); // Ajusta tiempo según necesites
-        } else {
-            // Si no hay estado especial, esperar 250ms y reducir
-            setTimeout(() => {
-                header.style.height = '85px';
-            }, 250);
-        }
-    
-        // Manejar botón de retroceso
-        window.addEventListener('popstate', () => {
-            // Forzar recarga de página
-            sessionStorage.setItem('forceReload', 'true');
-            location.reload();
-        });
+        setTimeout(() => {
+            header.style.height = '85px';
+        }, 50); // Retarda la reducción para activar la animación correctamente
     });
-    
+
     // Función para navegación con expansión
     function toggleHeaderHeight(targetUrl) {
-        // Marcar para expansión en próxima página
         sessionStorage.setItem('expandHeader', 'true');
-        
-        // Cambiar altura actual
-        const header = document.querySelector('header');
         header.style.height = '100vh';
         header.style.transition = 'height 0.5s ease';
-    
-        // Navegar después de transición
+
         setTimeout(() => {
             window.location.href = targetUrl;
         }, 500);
     }
-    
+
     // Aplicar a todos los enlaces
     document.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', (e) => {
@@ -430,12 +436,14 @@
             toggleHeaderHeight(link.href);
         });
     });
-    
+
     // Verificar si es una recarga forzada
     if (sessionStorage.getItem('forceReload') === 'true') {
         sessionStorage.removeItem('forceReload');
         sessionStorage.setItem('expandHeader', 'true');
     }
+}
+
     </script>
     
 

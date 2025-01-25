@@ -302,7 +302,10 @@ body.touch-device .principal_dr {
    </main>
 
    <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', setupHeaderAnimation);
+window.addEventListener('pageshow', setupHeaderAnimation);
+
+function setupHeaderAnimation() {
     const header = document.querySelector('header');
 
     // Siempre iniciar a 100vh
@@ -363,8 +366,7 @@ body.touch-device .principal_dr {
         sessionStorage.removeItem('forceReload');
         sessionStorage.setItem('expandHeader', 'true');
     }
-});
-
+}
 
     </script>
     
