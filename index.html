@@ -374,76 +374,82 @@
                 <img src="https://ogsbrand.storage.googleapis.com/media/images/Copy_of_OGS_MAR24_Banner_EDIT.2e16d0ba.fill-700x930-c100.png" alt="foto izquierda">
                 <p class="subtitle">THE 2.0 EDITION</p>
             </div>
-        </div>
+        </div>  
    </main>
 
    <script>
     document.addEventListener('DOMContentLoaded', setupHeaderAnimation);
-window.addEventListener('pageshow', setupHeaderAnimation);
+    window.addEventListener('pageshow', setupHeaderAnimation);
 
-function setupHeaderAnimation() {
-    const header = document.querySelector('header');
+    function setupHeaderAnimation() {
+        const header = document.querySelector('header');
 
-    // Siempre iniciar a 100vh
-    header.style.height = '100vh';
-    header.style.transition = 'height 0.5s ease';
-
-    // Detectar si el dispositivo es táctil
-    function isTouchDevice() {
-        return "ontouchstart" in window || (window.DocumentTouch && document instanceof DocumentTouch);
-    }
-
-    if (isTouchDevice() || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        document.body.classList.add('touch-device');
-    }
-
-    // Verificar si es una recarga con estado especial
-    if (sessionStorage.getItem('expandHeader') === 'true') {
-        setTimeout(() => {
-            header.style.height = '85px';
-            sessionStorage.removeItem('expandHeader');
-        }, 250);
-    } else {
-        setTimeout(() => {
-            header.style.height = '85px';
-        }, 250);
-    }
-
-    // Manejar botón de retroceso
-    window.addEventListener('popstate', () => {
-        // Forzar la animación desde 100vh
-        header.style.height = '100vh';
-        setTimeout(() => {
-            header.style.height = '85px';
-        }, 50); // Retarda la reducción para activar la animación correctamente
-    });
-
-    // Función para navegación con expansión
-    function toggleHeaderHeight(targetUrl) {
-        sessionStorage.setItem('expandHeader', 'true');
+        // Siempre iniciar a 100vh
         header.style.height = '100vh';
         header.style.transition = 'height 0.5s ease';
 
-        setTimeout(() => {
-            window.location.href = targetUrl;
-        }, 500);
-    }
+        // Detectar si el dispositivo es táctil
+        function isTouchDevice() {
+            return "ontouchstart" in window || (window.DocumentTouch && document instanceof DocumentTouch);
+        }
 
-    // Aplicar a todos los enlaces
-    document.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            toggleHeaderHeight(link.href);
+        // Detectar si el dispositivo no es táctil
+        function isNotTouchDevice() {
+            return !isTouchDevice();
+        }
+
+        if (isTouchDevice() || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            document.body.classList.add('touch-device');
+        } else if (isNotTouchDevice()) {
+            document.body.classList.remove('touch-device');
+        }
+
+        // Verificar si es una recarga con estado especial
+        if (sessionStorage.getItem('expandHeader') === 'true') {
+            setTimeout(() => {
+                header.style.height = '85px';
+                sessionStorage.removeItem('expandHeader');
+            }, 250);
+        } else {
+            setTimeout(() => {
+                header.style.height = '85px';
+            }, 250);
+        }
+
+        // Manejar botón de retroceso
+        window.addEventListener('popstate', () => {
+            // Forzar la animación desde 100vh
+            header.style.height = '100vh';
+            setTimeout(() => {
+                header.style.height = '85px';
+            }, 50); // Retarda la reducción para activar la animación correctamente
         });
-    });
 
-    // Verificar si es una recarga forzada
-    if (sessionStorage.getItem('forceReload') === 'true') {
-        sessionStorage.removeItem('forceReload');
-        sessionStorage.setItem('expandHeader', 'true');
+        // Función para navegación con expansión
+        function toggleHeaderHeight(targetUrl) {
+            sessionStorage.setItem('expandHeader', 'true');
+            header.style.height = '100vh';
+            header.style.transition = 'height 0.5s ease';
+
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 500);
+        }
+
+        // Aplicar a todos los enlaces
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleHeaderHeight(link.href);
+            });
+        });
+
+        // Verificar si es una recarga forzada
+        if (sessionStorage.getItem('forceReload') === 'true') {
+            sessionStorage.removeItem('forceReload');
+            sessionStorage.setItem('expandHeader', 'true');
+        }
     }
-}
-
     </script>
     
 
