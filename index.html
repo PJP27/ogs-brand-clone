@@ -440,6 +440,17 @@
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
+
+                // Ocultar todas las listas antes de bajar el header
+                document.querySelectorAll('ul').forEach(ul => {
+                    ul.style.display = 'none';
+                });
+
+                // Desmarcar todas las checkboxes
+                document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+
                 toggleHeaderHeight(link.href);
             });
         });

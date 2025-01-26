@@ -261,14 +261,108 @@ body.touch-device .principales{
     grid-template-areas: "a" "b";      
 }
 
+ul{
+    display:block;
+  position: fixed;
+  top: 85px;
+  left: -150px;
+  border: 1.3px solid rgb(0, 0, 0);
+  border-top: 0px;
+  border-left: 0px;
+  width: 150px;
+  transition: all .2s ease;
+  border-radius: 0px 0px 10px 0px;
+}
+
+input:checked  ~ ul{
+  display:block;
+  position: fixed;
+  top: 85px;
+  left: 0;
+  border: 1.3px solid rgb(0, 0, 0);
+  border-top: 0px;
+  border-left: 0px;
+  width: 150px;
+ 
+}
+
+input:checked  ~ ul .filtro{
+    display: block;
+    position: fixed;
+    top: 85px;
+    left: 0;
+    opacity: 1;
+    z-index: -9;
+}
+
+input {
+ display: none;
+ 
+}
+
+label {
+  box-sizing: border-box;
+  display: inline-block;
+  border: 0px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-weight: bold;
+  text-align: center;
+  user-select: none;
+}
+
+li {
+  display: block;
+  background: #ffcc00;
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+  
+}
+
+li:last-child{
+    border-radius: 0px 0px 10px 0px;
+}
+
+.filtro {
+    
+    position: fixed;
+    top: 85px;
+    left: 0;
+    opacity: 0;
+    transition: all .5s ease;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.369);
+    z-index: -9;
+}
+
+
     </style>
 </head>
 <body>
     <header>
         <div class="conjunto_izq">
             <div class="hamburgesa">
-                <img src="https://cdn-icons-png.flaticon.com/512/59/59660.png" alt="Tres Puntos">
-            </div>
+                <nav>
+                    <input type="checkbox" id="menu">
+                    <label for="menu"> ☰ </label>
+                    <ul>
+                      <div class="filtro"></div>
+                      <li><a href="index.html">Página Principal</a></li>
+                      <li><a href="TRUE FELINO.html">TRUE FELINO</a></li>
+                      <li><a href="OGS RECORDS.html">OGS RECORDS</a></li>
+                      <li><a href="RUNNING CLUB.html">RUNNING CLUB</a></li>
+                      <li><a href="SEND MEMES.html">SEND MEMES</a></li>
+                      <li><a href="THE BASICS & THE CLASSICS.html">THE BASICS & THE CLASSICS</a></li>
+                      <li><a href="THE 2.0 EDITION.html">THE 2.0 EDITION</a></li>
+                    </ul>
+                  </nav>
+                </div>
             <div  class="Logo">
                 <a href="./index.html">
                     <img src="https://www.ogsbrand.com/images/logo-black.png" alt="Logo">
@@ -329,10 +423,28 @@ body.touch-device .principales{
 
     function setupHeaderAnimation() {
         const header = document.querySelector('header');
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const lists = document.querySelectorAll('ul');
+        const icons = document.querySelectorAll('i');
+        const filtro = document.querySelector('.filtro');
 
         // Siempre iniciar a 100vh
         header.style.height = '100vh';
         header.style.transition = 'height 0.5s ease';
+
+        // Función para desactivar transiciones temporalmente
+        function disableTransitions() {
+            lists.forEach(list => (list.style.transition = 'none'));
+            icons.forEach(icon => (icon.style.transition = 'none'));
+            if (filtro) filtro.style.transition = 'none';
+        }
+
+        // Función para habilitar transiciones nuevamente
+        function enableTransitions() {
+            lists.forEach(list => (list.style.transition = ''));
+            icons.forEach(icon => (icon.style.transition = ''));
+            if (filtro) filtro.style.transition = '';
+        }
 
         // Detectar si el dispositivo es táctil
         function isTouchDevice() {
@@ -350,25 +462,36 @@ body.touch-device .principales{
             document.body.classList.remove('touch-device');
         }
 
-        // Verificar si es una recarga con estado especial
+        // Al cargar la página o regresar atrás, desactivar transiciones y resetear checkboxes
+        disableTransitions();
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+            if (filtro) {
+                filtro.style.display = 'none'; // Aseguramos que .filtro no esté visible inicialmente
+            }
+        });
+
         if (sessionStorage.getItem('expandHeader') === 'true') {
             setTimeout(() => {
                 header.style.height = '85px';
                 sessionStorage.removeItem('expandHeader');
+                enableTransitions(); // Reactivar transiciones
             }, 250);
         } else {
             setTimeout(() => {
                 header.style.height = '85px';
+                enableTransitions(); // Reactivar transiciones
             }, 250);
         }
 
         // Manejar botón de retroceso
         window.addEventListener('popstate', () => {
-            // Forzar la animación desde 100vh
+            disableTransitions();
             header.style.height = '100vh';
             setTimeout(() => {
                 header.style.height = '85px';
-            }, 50); // Retarda la reducción para activar la animación correctamente
+                enableTransitions();
+            }, 50);
         });
 
         // Función para navegación con expansión
@@ -386,7 +509,41 @@ body.touch-device .principales{
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
+
+                // Ocultar todas las listas antes de bajar el header
+                lists.forEach(ul => {
+                    ul.style.display = 'none';
+                });
+
+                // Desmarcar todas las checkboxes y manejar el filtro
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+
+                if (filtro) {
+                    setTimeout(() => {
+                        filtro.style.display = 'none';
+                    }, 500); // Esperar 0.5 segundos antes de ocultar
+                }
+
                 toggleHeaderHeight(link.href);
+            });
+        });
+
+        // Detectar cambios en los checkboxes
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                if (filtro) {
+                    if (checkbox.checked) {
+                        // Mostrar .filtro instantáneamente
+                        filtro.style.display = 'block';
+                    } else {
+                        // Ocultar .filtro después de 0.5 segundos
+                        setTimeout(() => {
+                            filtro.style.display = 'none';
+                        }, 500);
+                    }
+                }
             });
         });
 
@@ -397,6 +554,9 @@ body.touch-device .principales{
         }
     }
 </script>
+
+
+
  
     
 </body>
