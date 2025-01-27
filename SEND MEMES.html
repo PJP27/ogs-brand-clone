@@ -1,609 +1,644 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OG's SEND MEMES</title>
     <style>
+      @font-face {
+        font-family: "Raleway";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/raleway/v34/1Ptug8zYS_SKggPNyC0ITw.woff2)
+          format("woff2");
+      }
 
-@font-face {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/raleway/v34/1Ptug8zYS_SKggPNyC0ITw.woff2) format('woff2');
-  }
+      @font-face {
+        font-family: "Raleway";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/raleway/v34/1Ptug8zYS_SKggPNyC0ITw.woff2)
+          format("woff2");
+      }
 
-@font-face {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/raleway/v34/1Ptug8zYS_SKggPNyC0ITw.woff2) format('woff2');
-  }
+      @font-face {
+        font-family: "Raleway";
+        font-style: normal;
+        font-weight: 900;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/raleway/v34/1Ptug8zYS_SKggPNyC0ITw.woff2)
+          format("woff2");
+      }
 
-  @font-face {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/raleway/v34/1Ptug8zYS_SKggPNyC0ITw.woff2) format('woff2');
-  }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+        font-family: "Raleway", sans-serif;
+      }
+      header {
+        background-color: #ffcc03;
+        gap: 30px;
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+        transition: height 0.3s ease-in-out;
+        align-items: center;
+        padding: 10px;
+        width: 100%;
+        font-family: "Raleway", sans-serif;
+        font-weight: 350;
+        position: fixed;
+        top: 0;
+        z-index: 90;
+      }
+
+      .Logo img {
+        height: 53px;
+        width: auto;
+        cursor: pointer;
+      }
+
+      .hamburgesa img {
+        height: 30px;
+        width: auto;
+      }
+
+      .hamburgesa {
+        @media only screen and (max-width: 674px) {
+          position: absolute;
+          right: 55px;
+          flex-direction: row;
+          display: flex;
+          align-items: center;
         }
+      }
 
-        body{
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow-x: hidden;
-            font-family: 'Raleway', sans-serif;
+      main {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .carrito img {
+        height: 16px;
+        width: 16px;
+      }
+      .carrito {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .cuenta {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .conjunto_izq {
+        margin-left: 37px;
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .conjunto_dr {
+        position: absolute;
+        right: 55px;
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+
+        @media only screen and (max-width: 674px) {
+          display: none;
         }
-        header{
-            background-color: #FFCC03;
-            gap: 30px;
-            height: 100vh;
-            display: flex;
-            flex-direction:row ;
-            transition: height 0.3s ease-in-out;
-            align-items: center;
-            padding: 10px;
-            width: 100%;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 350;
-            position: fixed;
-            top: 0;
-            z-index: 90;
+      }
+
+      h1 {
+        margin-top: 10px;
+        font-size: 50px;
+      }
+
+      .principales {
+        display: grid;
+        grid-template-areas: "a b";
+        flex-direction: row;
+        gap: 25px;
+        margin-top: 3px;
+        margin-bottom: 25px;
+
+        @media only screen and (max-width: 1046px) {
+          grid-template-areas: "a" "b";
         }
+      }
 
-        .Logo img{
-            height: 53px;
-            width: auto;
-            cursor: pointer;
+      .principal_iz img,
+      .principal_dr img {
+        max-width: 45vw;
+        @media only screen and (max-width: 604px) {
+          max-width: 70vw;
         }
+      }
 
-        .hamburgesa img {
-            height: 30px;
-            width: auto;
-            
+      .principal_iz img:nth-of-type(2),
+      .principal_dr img:nth-of-type(2) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+
+        @media only screen and (max-width: 1046px) {
+          position: relative;
+          opacity: 1;
+          top: 0;
+          left: 0;
+          transform: translate(0px, 0px);
         }
+      }
 
-        .hamburgesa{
-            
-            @media only screen and (max-width: 674px) {
-                position: absolute;
-                right: 55px;
-                flex-direction: row;
-                display: flex;
-                align-items: center;
-            }
+      .principal_iz:hover img:nth-of-type(2),
+      .principal_dr:hover img:nth-of-type(2) {
+        @media only screen and (min-width: 1046px) {
+          opacity: 1;
         }
-        
-        main{
-            align-items: center;
-            display: flex;
-            flex-direction: column;
+      }
+
+      .principal_iz:hover img:nth-of-type(1),
+      .principal_dr:hover img:nth-of-type(1) {
+        @media only screen and (min-width: 1046px) {
+          opacity: 0;
         }
+      }
 
-        
+      .principal_iz {
+        grid-area: a;
+        position: relative;
 
-        .carrito img {
-            height: 16px;
-            width: 16px;
+        @media only screen and (max-width: 604px) {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
-        .carrito {
-            display: flex;
-            gap: 10px;
-            align-items: center;
+      }
+
+      .principal_dr {
+        grid-area: b;
+        position: relative;
+        @media only screen and (max-width: 604px) {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
+      }
 
-        .cuenta {
-            display: flex;
-            gap: 10px;
-            align-items: center;
+      .precios {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        width: 80%;
+        margin-bottom: 50px;
+
+        @media only screen and (max-width: 1046px) {
+          display: none;
         }
+      }
 
-        .conjunto_izq{
-            margin-left: 37px;
-            flex-direction: row;
-            display: flex;
-            align-items: center;
-            gap: 40px;
+      .precio2 {
+        position: absolute;
+        right: 10px;
+      }
+
+      .precios_principal_iz {
+        display: none;
+
+        @media only screen and (max-width: 1046px) {
+          display: block;
         }
+      }
 
-        .conjunto_dr{
-            position: absolute;
-            right: 55px;
-            flex-direction: row;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
-            @media only screen and (max-width: 674px) {
-                display: none;
-            }
+      .precios_principal_dr {
+        display: none;
+        @media only screen and (max-width: 1046px) {
+          display: block;
         }
+      }
 
-        h1{
-            margin-top: 10px;
-            font-size: 50px;
-        }
+      body.touch-device .principal_iz img:nth-of-type(2),
+      body.touch-device .principal_dr img:nth-of-type(2) {
+        position: relative;
+        opacity: 1;
+        top: 0;
+        left: 0;
+        transform: translate(0px, 0px);
+        grid-area: b;
+      }
 
-        .principales{
-            display: grid;
-            grid-template-areas: "a b";
-            flex-direction: row;
-            gap: 25px;
-            margin-top: 3px;
-            margin-bottom: 25px;
+      body.touch-device .principal_iz img:nth-of-type(1),
+      body.touch-device .principal_dr img:nth-of-type(1) {
+        opacity: 1;
+        grid-area: a;
+      }
 
-            @media only screen and (max-width: 1046px) {
-                grid-template-areas: "a" "b";
-            }
-        }
+      body.touch-device .principal_iz,
+      body.touch-device .principal_dr {
+        display: grid;
+        grid-template-areas: "a b" "c c";
+        justify-content: center;
+        align-items: center;
+      }
 
-        .principal_iz img, .principal_dr img {
-            max-width: 45vw;
-            @media only screen and (max-width: 604px) {
-                max-width: 70vw;
-            }
-        }
+      body.touch-device .precios {
+        display: none;
+      }
 
+      body.touch-device .precios_principal_iz,
+      body.touch-device .precios_principal_dr {
+        display: block;
+        grid-area: c;
+        margin-left: 10px;
+      }
 
-        .principal_iz img:nth-of-type(2), .principal_dr img:nth-of-type(2) {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
+      body.touch-device .principal_iz img,
+      body.touch-device .principal_dr img {
+        max-width: 50vw;
+      }
 
-            @media only screen and (max-width: 1046px) {
-                position: relative;
-                opacity: 1;
-                top: 0;
-                left: 0;
-                transform: translate(0px, 0px);
-            }
+      body.touch-device .principales {
+        grid-template-areas: "a" "b";
+      }
 
-            
-        }
+      ul {
+        display: block;
+        position: fixed;
+        top: 85px;
+        left: -200px;
+        border: 1.3px solid rgb(0, 0, 0);
+        border-top: 0px;
+        border-left: 0px;
+        width: 200px;
+        transition: all 0.3s ease;
+        border-radius: 0px 0px 10px 0px;
+        z-index: 10000;
+      }
 
-        .principal_iz:hover img:nth-of-type(2), .principal_dr:hover img:nth-of-type(2){
-           
-            @media only screen and (min-width: 1046px) {
-                opacity: 1;
-            }
-        } 
+      input:checked ~ ul {
+        display: block;
+        position: fixed;
+        top: 85px;
+        left: 0;
+        border: 1.3px solid rgb(0, 0, 0);
+        border-top: 0px;
+        border-left: 0px;
+        width: 200px;
+        z-index: 10000;
+      }
 
-        .principal_iz:hover img:nth-of-type(1), .principal_dr:hover img:nth-of-type(1){
-            @media only screen and (min-width: 1046px) {
-                opacity: 0;
-            }
-        }
+      input:checked ~ ul .filtro {
+        display: block;
+        position: fixed;
+        top: 85px;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        transition: opacity 0.5s ease;
+        opacity: 1;
+        z-index: -90;
+      }
 
-        .principal_iz{
-            grid-area: a;
-            position: relative;
-            
+      input {
+        display: none;
+      }
 
-            @media only screen and (max-width: 604px) {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-        }
+      label {
+        box-sizing: border-box;
+        display: inline-block;
+        font-size: 20px;
+        border: 0px solid black;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        font-weight: bold;
+        text-align: center;
+        user-select: none;
+      }
 
+      li {
+        display: block;
+        background: #ffcc00;
+        font-family: "Raleway", sans-serif;
+        list-style: none;
+        font-weight: 400;
+        padding: 10px;
+        padding-top: 10px;
+        padding-left: 50px;
+      }
 
-        .principal_dr{
-            grid-area: b;
-            position: relative; 
-            @media only screen and (max-width: 604px) {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-        }
-        
-        .precios{  
-            display: flex;
-            flex-direction: row;
-            position: relative;
-            width: 80%;
-            margin-bottom: 50px;
+      li:last-child {
+        border-radius: 0px 0px 10px 0px;
+      }
 
-            @media only screen and (max-width: 1046px) {
-                display: none;
-            }
-        }
+      li:nth-child(2) {
+        font-family: "Raleway", sans-serif;
+        list-style: none;
+        font-weight: 900;
+        padding-left: 25px;
+        text-decoration: underline;
+        text-decoration-color: #bf9902;
+        text-decoration-thickness: 3px;
+        font-size: 20px;
+      }
 
-        .precio2{
-            position: absolute;
-            right: 10px;
-        }
+      li:nth-child(3) {
+        font-family: "Raleway", sans-serif;
+        list-style: none;
+        font-weight: 400;
+        padding-top: 10px;
+        padding-left: 50px;
+      }
 
-        .precios_principal_iz{
-            display: none;
+      .filtro {
+        position: fixed;
+        top: 85px;
+        display: block;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        width: 0;
+        height: 0;
+        background-color: rgba(255, 255, 255, 0.493);
+        z-index: -90;
+      }
 
-            @media only screen and (max-width: 1046px) {
-                display: block;
-            }
-        } 
-
-        .precios_principal_dr{
-            display: none;
-            @media only screen and (max-width: 1046px) {
-                display: block;
-            }
-        }
-
-        body.touch-device .principal_iz img:nth-of-type(2),
-body.touch-device .principal_dr img:nth-of-type(2) {
-    position: relative;
-    opacity: 1;
-    top: 0;
-    left: 0;
-    transform: translate(0px, 0px);
-    grid-area: b;
-}
-
-body.touch-device .principal_iz img:nth-of-type(1),
-body.touch-device .principal_dr img:nth-of-type(1) {
-    opacity: 1;
-    grid-area: a;
-    
-}
-
-body.touch-device .principal_iz,
-body.touch-device .principal_dr {
-    display: grid;
-    grid-template-areas: "a b" "c c";
-    justify-content: center;
-    align-items: center;
-}
-
-body.touch-device .precios {
-    display: none;
-}
-
-body.touch-device .precios_principal_iz,
-body.touch-device .precios_principal_dr {
-    display: block;
-    grid-area: c;
-    margin-left: 10px;
-}
-
-body.touch-device .principal_iz img,
-body.touch-device .principal_dr img {
-    max-width: 50vw;
-}
-
-body.touch-device .principales{    
-    grid-template-areas: "a" "b";      
-}
-
-ul{
-  display:block;
-  position: fixed;
-  top: 85px;
-  left: -200px;
-  border: 1.3px solid rgb(0, 0, 0);
-  border-top: 0px;
-  border-left: 0px;
-  width:  200px;
-  transition: all .3s ease;
-  border-radius: 0px 0px 10px 0px;
-  z-index: 10000;
-
-}
-
-input:checked  ~ ul{
-  display:block;
-  position: fixed;
-  top: 85px;
-  left: 0;
-  border: 1.3px solid rgb(0, 0, 0);
-  border-top: 0px;
-  border-left: 0px;
-  width: 200px;
-  z-index: 10000;
-}
-
-input:checked  ~ ul .filtro{
-    display: block;
-    position: fixed;
-    top: 85px;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    transition: opacity .5s ease;
-    opacity: 1;
-    z-index: -90;
-}
-
-input {
- display: none;
- 
-}
-
-label {
-  box-sizing: border-box;
-  display: inline-block;
-  font-size: 20px;
-  border: 0px solid black;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  font-weight: bold;
-  text-align: center;
-  user-select: none;
-}
-
-li {
-  display: block;
-  background: #ffcc00;
-  font-family: 'Raleway', sans-serif;
-  list-style: none;
-  font-weight: 400;
-  padding: 10px;
-  padding-top: 10px;
-  padding-left: 50px;
-}
-
-li:last-child{
-    border-radius: 0px 0px 10px 0px;
-}
-
-
-
-li:nth-child(2) {
-  font-family: 'Raleway', sans-serif;
-  list-style: none;
-  font-weight: 900;
-  padding-left: 25px;
-  text-decoration: underline;
-  text-decoration-color: #BF9902;
-  text-decoration-thickness: 3px;
-  font-size: 20px;
-}
-
-li:nth-child(3) {
-  font-family: 'Raleway', sans-serif;
-  list-style: none;
-  font-weight: 400;
-  padding-top: 10px;
-  padding-left: 50px;
-}
-
-.filtro {
-    position: fixed;
-    top: 85px;
-    display: block;
-    left: 0;
-    opacity: 0;
-    transition: opacity .5s ease;
-    width: 0;
-    height: 0;
-    background-color: rgba(255, 255, 255, 0.493);
-    z-index: -90;
-}
-
-a {
-            color: inherit;
-            text-decoration: none;
-            cursor: inherit;
-            cursor: pointer;
-        }
-
+      a {
+        color: inherit;
+        text-decoration: none;
+        cursor: inherit;
+        cursor: pointer;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="conjunto_izq">
-            <div class="hamburgesa">
-                <nav>
-                    <input type="checkbox" id="menu">
-                    <label for="menu"> ☰ </label>
-                    <ul>
-                      <div class="filtro"></div>
-                      <li><a href="index.html">Home</a></li>
-                      <li><a href="TRUE FELINO.html">TRUE FELINO</a></li>
-                      <li><a href="OGS RECORDS.html">OGS RECORDS</a></li>
-                      <li><a href="RUNNING CLUB.html">RUNNING CLUB</a></li>
-                      <li><a href="SEND MEMES.html">SEND MEMES</a></li>
-                      <li><a href="THE BASICS & THE CLASSICS.html">THE BASICS & THE CLASSICS</a></li>
-                      <li><a href="THE 2.0 EDITION.html">THE 2.0 EDITION</a></li>
-                    </ul>
-                  </nav>
-                </div>
-            <div  class="Logo">
-                <a href="./index.html">
-                    <img src="https://www.ogsbrand.com/images/logo-black.png" alt="Logo">
-                </a>
-            </div>
+      <div class="conjunto_izq">
+        <div class="hamburgesa">
+          <nav>
+            <input type="checkbox" id="menu" />
+            <label for="menu"> ☰ </label>
+            <ul>
+              <div class="filtro"></div>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="TRUE FELINO.html">TRUE FELINO</a></li>
+              <li><a href="OGS RECORDS.html">OGS RECORDS</a></li>
+              <li><a href="RUNNING CLUB.html">RUNNING CLUB</a></li>
+              <li><a href="SEND MEMES.html">SEND MEMES</a></li>
+              <li>
+                <a href="THE BASICS & THE CLASSICS.html"
+                  >THE BASICS & THE CLASSICS</a
+                >
+              </li>
+              <li><a href="THE 2.0 EDITION.html">THE 2.0 EDITION</a></li>
+            </ul>
+          </nav>
         </div>
-        <div class="conjunto_dr">
-            <div class="cuenta">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.696.074a3.841 3.841 0 1 1 1.498 7.534A3.841 3.841 0 0 1 7.696.074ZM9 1.049a2.85 2.85 0 1 0-1.112 5.59 2.85 2.85 0 0 0 1.112-5.59Z"></path> <path d="M3.887 10.813A6.444 6.444 0 0 1 14.89 15.37a.494.494 0 1 1-.988 0v-.003a5.457 5.457 0 0 0-10.913 0v.003a.494.494 0 1 1-.988 0c0-1.71.679-3.348 1.887-4.557Z"></path></svg>
-                <p>Cuenta</p>
-            </div>
-            <div class="carrito">
-                <img src="https://cdn-icons-png.flaticon.com/512/6652/6652151.png" alt="">
-                <p>Carrito</p>
-            </div> 
+        <div class="Logo">
+          <a href="./index.html">
+            <img
+              src="https://www.ogsbrand.com/images/logo-black.png"
+              alt="Logo"
+            />
+          </a>
         </div>
-   </header> 
+      </div>
+      <div class="conjunto_dr">
+        <div class="cuenta">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M7.696.074a3.841 3.841 0 1 1 1.498 7.534A3.841 3.841 0 0 1 7.696.074ZM9 1.049a2.85 2.85 0 1 0-1.112 5.59 2.85 2.85 0 0 0 1.112-5.59Z"
+            ></path>
+            <path
+              d="M3.887 10.813A6.444 6.444 0 0 1 14.89 15.37a.494.494 0 1 1-.988 0v-.003a5.457 5.457 0 0 0-10.913 0v.003a.494.494 0 1 1-.988 0c0-1.71.679-3.348 1.887-4.557Z"
+            ></path>
+          </svg>
+          <p>Cuenta</p>
+        </div>
+        <div class="carrito">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/6652/6652151.png"
+            alt=""
+          />
+          <p>Carrito</p>
+        </div>
+      </div>
+    </header>
 
-   <!-- PÁGINA SEND MEMES -->
+    <!-- PÁGINA SEND MEMES -->
 
-   <main>
+    <main>
+      <h1>SEND MEMES</h1>
 
-    <h1>SEND MEMES</h1>
-
-    <div class="principales">
+      <div class="principales">
         <div class="principal_iz">
-                <img src="https://ogsbrand.storage.googleapis.com/media/images/MEME_ADDICT_OGS_White_Huge_Te.2e16d0ba.fill-800x933-c100.png" alt="foto izquierda">
-                <img src="https://ogsbrand.storage.googleapis.com/media/images/MEME_ADDICT_OGS_White_Huge_Te.2e16d0ba.fill-800x933-c100_fMvxDZj.png" alt="foto izquierda" class="camisetadetras">  
-                <div class="precios_principal_iz">
-                    <h2>SEND MEMES - Relaxed fit T-shirt</h2>
-                    <p>34.99 €</p>
-                </div>
-        </div>
-        <div class="principal_dr">
-            <img src="https://ogsbrand.storage.googleapis.com/media/images/MEME_ADDICT_OGS_Black_Huge_Te.2e16d0ba.fill-800x933-c100.png" alt="foto izquierda">
-            <img src="https://ogsbrand.storage.googleapis.com/media/images/MEME_ADDICT_OGS_Black_Huge_Te.2e16d0ba.fill-800x933-c100_BTvP3d0.png" alt="foto izquierda" class="camisetadetras">
-            <div class="precios_principal_dr">
-                <h2>SEND MEMES - Oversized Hoodie</h2>
-                <p>59.99 €</p>
-            </div>
-        </div>
-    </div>
-    <div class="precios">
-        <div>
+          <img
+            src="https://ogsbrand.storage.googleapis.com/media/images/MEME_ADDICT_OGS_White_Huge_Te.2e16d0ba.fill-800x933-c100.png"
+            alt="foto izquierda"
+          />
+          <img
+            src="https://ogsbrand.storage.googleapis.com/media/images/MEME_ADDICT_OGS_White_Huge_Te.2e16d0ba.fill-800x933-c100_fMvxDZj.png"
+            alt="foto izquierda"
+            class="camisetadetras"
+          />
+          <div class="precios_principal_iz">
             <h2>SEND MEMES - Relaxed fit T-shirt</h2>
             <p>34.99 €</p>
+          </div>
         </div>
-        <div class="precio2">
+        <div class="principal_dr">
+          <img
+            src="https://ogsbrand.storage.googleapis.com/media/images/MEME_ADDICT_OGS_Black_Huge_Te.2e16d0ba.fill-800x933-c100.png"
+            alt="foto izquierda"
+          />
+          <img
+            src="https://ogsbrand.storage.googleapis.com/media/images/MEME_ADDICT_OGS_Black_Huge_Te.2e16d0ba.fill-800x933-c100_BTvP3d0.png"
+            alt="foto izquierda"
+            class="camisetadetras"
+          />
+          <div class="precios_principal_dr">
             <h2>SEND MEMES - Oversized Hoodie</h2>
             <p>59.99 €</p>
+          </div>
         </div>
-    </div>
-   </main>
+      </div>
+      <div class="precios">
+        <div>
+          <h2>SEND MEMES - Relaxed fit T-shirt</h2>
+          <p>34.99 €</p>
+        </div>
+        <div class="precio2">
+          <h2>SEND MEMES - Oversized Hoodie</h2>
+          <p>59.99 €</p>
+        </div>
+      </div>
+    </main>
 
-   <script>
-    document.addEventListener('DOMContentLoaded', setupHeaderAnimation);
-    window.addEventListener('pageshow', setupHeaderAnimation);
+    <script>
+      document.addEventListener("DOMContentLoaded", setupHeaderAnimation);
+      window.addEventListener("pageshow", setupHeaderAnimation);
 
-    function setupHeaderAnimation() {
-        const header = document.querySelector('header');
+      function setupHeaderAnimation() {
+        const header = document.querySelector("header");
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        const lists = document.querySelectorAll('ul');
-        const icons = document.querySelectorAll('i');
-        const filtro = document.querySelector('.filtro');
+        const lists = document.querySelectorAll("ul");
+        const icons = document.querySelectorAll("i");
+        const filtro = document.querySelector(".filtro");
 
         // Siempre iniciar a 100vh
-        header.style.height = '100vh';
-        header.style.transition = 'height 0.5s ease';
+        header.style.height = "100vh";
+        header.style.transition = "height 0.5s ease";
 
         // Función para desactivar transiciones temporalmente
         function disableTransitions() {
-            lists.forEach(list => (list.style.transition = 'none'));
-            icons.forEach(icon => (icon.style.transition = 'none'));
-            if (filtro) filtro.style.transition = 'none';
+          lists.forEach((list) => (list.style.transition = "none"));
+          icons.forEach((icon) => (icon.style.transition = "none"));
+          if (filtro) filtro.style.transition = "none";
         }
 
         // Función para habilitar transiciones nuevamente
         function enableTransitions() {
-            lists.forEach(list => (list.style.transition = ''));
-            icons.forEach(icon => (icon.style.transition = ''));
-            if (filtro) filtro.style.transition = '';
+          lists.forEach((list) => (list.style.transition = ""));
+          icons.forEach((icon) => (icon.style.transition = ""));
+          if (filtro) filtro.style.transition = "";
         }
 
         // Detectar si el dispositivo es táctil
         function isTouchDevice() {
-            return "ontouchstart" in window || (window.DocumentTouch && document instanceof DocumentTouch);
+          return (
+            "ontouchstart" in window ||
+            (window.DocumentTouch && document instanceof DocumentTouch)
+          );
         }
 
         // Detectar si el dispositivo no es táctil
         function isNotTouchDevice() {
-            return !isTouchDevice();
+          return !isTouchDevice();
         }
 
-        if (isTouchDevice() || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            document.body.classList.add('touch-device');
+        if (
+          isTouchDevice() ||
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent
+          )
+        ) {
+          document.body.classList.add("touch-device");
         } else if (isNotTouchDevice()) {
-            document.body.classList.remove('touch-device');
+          document.body.classList.remove("touch-device");
         }
 
         // Al cargar la página o regresar atrás, desactivar transiciones y resetear checkboxes
         disableTransitions();
-        checkboxes.forEach(checkbox => {
-            checkbox.checked = false;
-            if (filtro) {
-                filtro.style.display = 'none'; // Aseguramos que .filtro no esté visible inicialmente
-            }
+        checkboxes.forEach((checkbox) => {
+          checkbox.checked = false;
+          if (filtro) {
+            filtro.style.display = "none"; // Aseguramos que .filtro no esté visible inicialmente
+          }
         });
 
-        if (sessionStorage.getItem('expandHeader') === 'true') {
-            setTimeout(() => {
-                header.style.height = '85px';
-                sessionStorage.removeItem('expandHeader');
-                enableTransitions(); // Reactivar transiciones
-                filtro.style.display = 'block';
-            }, 250);
+        if (sessionStorage.getItem("expandHeader") === "true") {
+          setTimeout(() => {
+            header.style.height = "85px";
+            sessionStorage.removeItem("expandHeader");
+            enableTransitions(); // Reactivar transiciones
+            filtro.style.display = "block";
+          }, 250);
         } else {
-            setTimeout(() => {
-                header.style.height = '85px';
-                enableTransitions(); // Reactivar transiciones
-                filtro.style.display = 'block';
-            }, 250);
+          setTimeout(() => {
+            header.style.height = "85px";
+            enableTransitions(); // Reactivar transiciones
+            filtro.style.display = "block";
+          }, 250);
         }
 
         // Manejar botón de retroceso
-        window.addEventListener('popstate', () => {
-            disableTransitions();
-            header.style.height = '100vh';
-            setTimeout(() => {
-                header.style.height = '85px';
-                enableTransitions();
-            }, 50);
+        window.addEventListener("popstate", () => {
+          disableTransitions();
+          header.style.height = "100vh";
+          setTimeout(() => {
+            header.style.height = "85px";
+            enableTransitions();
+          }, 50);
         });
 
         // Función para navegación con expansión
         function toggleHeaderHeight(targetUrl) {
-            sessionStorage.setItem('expandHeader', 'true');
-            header.style.height = '100vh';
-            header.style.transition = 'height 0.5s ease';
+          sessionStorage.setItem("expandHeader", "true");
+          header.style.height = "100vh";
+          header.style.transition = "height 0.5s ease";
 
-            setTimeout(() => {
-                window.location.href = targetUrl;
-            }, 500);
+          setTimeout(() => {
+            window.location.href = targetUrl;
+          }, 500);
         }
 
         // Aplicar a todos los enlaces
-        document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
+        document.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
 
-                // Ocultar todas las listas antes de bajar el header
-                lists.forEach(ul => {
-                    ul.style.display = 'none';
-                });
-
-                // Desmarcar todas las checkboxes y manejar el filtro
-                checkboxes.forEach(checkbox => {
-                    checkbox.checked = false;
-                });
-
-                toggleHeaderHeight(link.href);
+            // Ocultar todas las listas antes de bajar el header
+            lists.forEach((ul) => {
+              ul.style.display = "none";
             });
+
+            // Desmarcar todas las checkboxes y manejar el filtro
+            checkboxes.forEach((checkbox) => {
+              checkbox.checked = false;
+            });
+
+            toggleHeaderHeight(link.href);
+          });
         });
 
         // Función para desmarcar checkboxes al hacer clic en .filtro
         if (filtro) {
-            filtro.addEventListener('click', () => {
-                checkboxes.forEach(checkbox => {
-                    checkbox.checked = false;
-                });
+          filtro.addEventListener("click", () => {
+            checkboxes.forEach((checkbox) => {
+              checkbox.checked = false;
             });
+          });
         }
-        
+
         // Verificar si es una recarga forzada
-        if (sessionStorage.getItem('forceReload') === 'true') {
-            sessionStorage.removeItem('forceReload');
-            sessionStorage.setItem('expandHeader', 'true');
+        if (sessionStorage.getItem("forceReload") === "true") {
+          sessionStorage.removeItem("forceReload");
+          sessionStorage.setItem("expandHeader", "true");
         }
-    }
-</script>
-
-
-</body>
+      }
+    </script>
+  </body>
 </html>
