@@ -455,3 +455,11 @@ a {
   cursor: inherit;
   cursor: pointer;
 }
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffcc03;
+  height: 50px;
+}
