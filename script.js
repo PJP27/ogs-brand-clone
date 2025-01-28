@@ -25,7 +25,7 @@ function setupHeader() {
   });
 
   if (filtro) {
-    filtro.style.display = "none"; // Aseguramos que .filtro no esté visible inicialmente
+    filtro.style.display = "block"; // Aseguramos que .filtro no esté visible inicialmente
   }
 
   // Aplicar a todos los enlaces
