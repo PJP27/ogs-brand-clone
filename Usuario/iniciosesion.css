@@ -1,0 +1,46 @@
+.iniciosesion {
+  width: 80vw;
+  max-width: 400px;
+  text-align: left;
+  margin-top: 50px;
+}
+
+.centrar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 85px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+input[type="text"] {
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+  border: 0;
+  font-size: 15px;
+  outline: none;
+  color: rgba(0, 0, 0, 0.705);
+}
+
+input[type="text"]:focus {
+  border: none;
+  outline: none;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.subrayado {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(51, 51, 51, 0.733);
+}
+
+h2 {
+  margin-top: 40px;
+}
