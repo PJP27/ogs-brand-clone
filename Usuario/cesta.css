@@ -1,0 +1,16 @@
+.articulo_compra {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px dotted #ccc;
+  margin-top: 50px;
+}
+
+.articulo_compra:first-child {
+  margin-top: 80px;
+}
+
+.articulo_compra h2 {
+  margin-top: 0;
+}
